@@ -1,7 +1,7 @@
 extends Area2D
 
 class_name Projectile
-@export var lifetime_seconds: float = 5.0
+@export var lifetime_seconds: float = 2.0
 
 var direction = Vector2(1.0,0.0)
 var speed: float = 600
@@ -21,7 +21,7 @@ func _ready():
 	connect("area_entered", _on_Water_area_entered)
 	
 func _on_Timer_timeout():
-	queue_free() # Automattically despawns projectiles when the timer EXPIRES
+	queue_free() # Automatcally despawns projectiles when the timer EXPIRES
 	
 func _on_Water_area_entered(area):
 	if area.is_in_group("fire"):

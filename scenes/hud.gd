@@ -44,7 +44,7 @@ func show_game_over():
 	$StartButton.show()
 
 func show_game_over_win():
-	show_message("You survived.. take a rest.. you deserved it.")
+	show_message("You survived.. take a rest.. you deserve it.")
 	# wait until the message time has counted down.
 	await $MessageTimer.timeout
 	

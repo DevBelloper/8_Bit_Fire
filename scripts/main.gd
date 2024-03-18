@@ -6,27 +6,26 @@ var score
 var last_fire_position = Vector2() # Place Holder
 var spawn_area_rect = Rect2(Vector2(1737, -248), Vector2(1927, 75)) # Spawn Area Refrence Rectangle 
 var fire_amount = 10 # Amount of fire to spawn 
-var current_wave = 0 # Enemy wave
+var current_wave = 1 # Enemy wave
 var initial_fire_timeout = 3 # Seconds between fires for the first wave
 var fire_timeout = initial_fire_timeout
 var timeout_decrease = 0.5 # How much to decrease the timeout each wave. 
-var max_waves = 5 # Defines the number of waves
+var max_waves = 3 # Defines the number of waves
 
 
 func _ready(): 
-	new_game()
+	
+	
+	# Dynamically connect signals 
 	var weapon = $Player/Weapon
 
-	weapon.connect("water_used", _on_water_used)
 
-func _on_water_used(_amount):
-	print("DEBUG- water used MAIN SCRIPT")
-	
 
 func new_game():
-	score = 0 
-	$StartTimer.start()
-	get_tree().call_group("fire", "queue_free")
+	score = 0 # Set score to zero
+	$StartTimer.start() 
+	get_tree().call_group("fire", "queue_free") # Removes all fires when game is started
+	# Begin calls to HUD 
 	$HUD.update_score(score)
 	$HUD.show_message("The forest is on fire..")
 	
@@ -42,7 +41,7 @@ func _on_start_timer_timeout():
 	$FireTimer.start()
 	
 func _on_fire_timer_timeout():
-	# Cehck too see if there is a lmit for spawning fires
+	# Check to see if there is a limit for spawning fires
 	if fire_amount > 0 :
 		spawn_fire()
 		fire_amount -= 1
@@ -56,17 +55,17 @@ func check_for_remaining_fires():
 		
 func prepare_next_wave():
 	if current_wave >= max_waves:
-		game_over_win() # Player wins if he survives whatever the heck is happening
+		game_over_win() # Player wins if he survives the waves
 		return
 		
 	current_wave += 1 	# Increment Wave Count
 	$HUD.show_message( "Wave " + str(current_wave) + " completed. The forest is still burning..")
 	
-	# Implement a delay or some visual feedback that a new wave is starting
+	#TODO Implement a delay or some visual feedback that a new wave is starting
 	await get_tree().create_timer(2.0).timeout # Waits two seconds before starting the next wave.
 	
-	fire_amount = 10 + current_wave * 5 # Difficulty scalling here boss
-	fire_timeout = max(fire_timeout - timeout_decrease, 0.5) # Timer doesn't become negative or to low
+	fire_amount = 10 + current_wave * 5 # Difficulty scaling here boss
+	fire_timeout = max(fire_timeout - timeout_decrease, 0.5) # Timer safeguard so timer doesn't become negative or to low
 	$FireTimer.wait_time = fire_timeout # Apply new timeout to the timer 
 	$FireTimer.start() # Restart timer for next wave
 	$HUD.show_message("Wave " + str(current_wave))
@@ -95,7 +94,7 @@ func spawn_fire():
 func increase_score():
 	score += 1
 	check_for_remaining_fires()
-	print("DEBUG-Increase score Function")
+	#print("DEBUG-Increase score Function")
 	$HUD.update_score(score)
 	
 
