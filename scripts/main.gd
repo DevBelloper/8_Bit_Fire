@@ -13,12 +13,6 @@ var timeout_decrease = 0.5 # How much to decrease the timeout each wave.
 var max_waves = 3 # Defines the number of waves
 
 
-func _ready(): 
-	
-	
-	# Dynamically connect signals 
-	var weapon = $Player/Weapon
-
 
 
 func new_game():
