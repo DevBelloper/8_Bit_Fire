@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://noalayscvh3t"]
 
-[ext_resource type="Script" path="res://scenes/projectile.gd" id="1_7h5jn"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_fdk81"]
 [ext_resource type="Texture2D" uid="uid://cqdqqekp6u5v5" path="res://assets/water.png" id="2_o7jvt"]
 
 [sub_resource type="Shader" id="Shader_l0rgv"]
@@ -24,7 +24,7 @@ shader = SubResource("Shader_l0rgv")
 scale = Vector2(0.982299, 0.988166)
 collision_layer = 17
 collision_mask = 4
-script = ExtResource("1_7h5jn")
+script = ExtResource("1_fdk81")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_kraxi")

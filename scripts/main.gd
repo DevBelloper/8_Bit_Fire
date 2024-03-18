@@ -21,7 +21,7 @@ func new_game():
 	get_tree().call_group("fire", "queue_free") # Removes all fires when game is started
 	# Begin calls to HUD 
 	$HUD.update_score(score)
-	$HUD.show_message("The forest is on fire..")
+	$HUD.show_message("The forest is on FIRE!!!")
 	
 func game_over():
 	$FireTimer.stop()
@@ -53,10 +53,10 @@ func prepare_next_wave():
 		return
 		
 	current_wave += 1 	# Increment Wave Count
-	$HUD.show_message( "Wave " + str(current_wave) + " completed. The forest is still burning..")
+	$HUD.show_message( "The fire has taken a break..")
 	
 	#TODO Implement a delay or some visual feedback that a new wave is starting
-	await get_tree().create_timer(2.0).timeout # Waits two seconds before starting the next wave.
+	await get_tree().create_timer(10.0).timeout # Waits two seconds before starting the next wave.
 	
 	fire_amount = 10 + current_wave * 5 # Difficulty scaling here boss
 	fire_timeout = max(fire_timeout - timeout_decrease, 0.5) # Timer safeguard so timer doesn't become negative or to low

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgd0ag2prmrcp"]
+[gd_scene load_steps=12 format=3 uid="uid://dgd0ag2prmrcp"]
 
 [ext_resource type="PackedScene" uid="uid://dijksomgphj8l" path="res://scenes/level.tscn" id="1_cxjqo"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l77q7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://pg758lbec4jt" path="res://scenes/fire.tscn" id="3_lqplh"]
 [ext_resource type="PackedScene" uid="uid://c4h6rplc6pii2" path="res://scenes/hud.tscn" id="5_5yc50"]
 [ext_resource type="PackedScene" uid="uid://dqoeyba2scmd0" path="res://scenes/resupply.tscn" id="6_qdjft"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="7_bxrx6"]
 [ext_resource type="Texture2D" uid="uid://d2eme7qk2wls0" path="res://assets/Paralax-sky.png" id="7_nu2m4"]
 [ext_resource type="Texture2D" uid="uid://5orng4uc4snb" path="res://assets/Paralax-clouds.png" id="8_5obu5"]
 [ext_resource type="Texture2D" uid="uid://bnp2ria37l8pl" path="res://assets/Paralax-back hill.png" id="9_da0qk"]
@@ -55,6 +56,7 @@ offset = Vector2(0, -376)
 scale = Vector2(0.3, 0.3)
 transform = Transform2D(0.3, 0, 0, 0.3, 0, -376)
 follow_viewport_enabled = true
+script = ExtResource("7_bxrx6")
 
 [node name="ParallaxLayer_SKY" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)

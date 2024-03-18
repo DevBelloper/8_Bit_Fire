@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4h6rplc6pii2"]
 
-[ext_resource type="Script" path="res://scenes/hud.gd" id="1_rmay8"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_mx5w5"]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_rmay8")
+script = ExtResource("1_mx5w5")
 
 [node name="ScoreLabel" type="Label" parent="."]
 offset_left = 62.0
