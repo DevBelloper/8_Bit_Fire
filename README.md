@@ -1,21 +1,21 @@
 # 8_Bit_Fire
- Portfolio (Game I made to play with my son)
+ #Portfolio (Game I made to play with my son)
 
 
 
-#########################
-##       Howdy        ##
-########################
+
+##       Howdy        
+
 
 ###
-# Assets Folder
-## Custom Assets and art for the game
+## Assets Folder
+### Custom Assets and art for the game
 
-# Scence Folder 
-## Scence structure containing nodes
+## Scene Folder 
+### Scence structure containing nodes
 
-# Scripts Folder
-## The Good stuff, Contains all the meat that makes it work. 
+## Scripts Folder
+### The Good stuff, Contains all the meat that makes it work. 
 
-# Sound Folder
-## Custom recorded sounds
+## Sound Folder
+### Custom recorded sounds
