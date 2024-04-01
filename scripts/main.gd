@@ -5,12 +5,12 @@ extends Node
 var score
 var last_fire_position = Vector2() # Place Holder
 var spawn_area_rect = Rect2(Vector2(1737, -248), Vector2(1927, 75)) # Spawn Area Refrence Rectangle 
-var fire_amount = 10 # Amount of fire to spawn 
-var current_wave = 1 # Enemy wave
+var fire_amount = 1 # Amount of fire to spawn 
+var current_wave = 0 # Enemy wave
 var initial_fire_timeout = 3 # Seconds between fires for the first wave
 var fire_timeout = initial_fire_timeout
 var timeout_decrease = 0.5 # How much to decrease the timeout each wave. 
-var max_waves = 3 # Defines the number of waves
+var max_waves = 5 # Defines the number of waves
 
 
 
@@ -33,6 +33,7 @@ func game_over_win():
 	
 func _on_start_timer_timeout():
 	$FireTimer.start()
+	check_for_remaining_fires()
 	
 func _on_fire_timer_timeout():
 	# Check to see if there is a limit for spawning fires
@@ -46,6 +47,7 @@ func check_for_remaining_fires():
 	var fire_instances = get_tree().get_nodes_in_group("fire")
 	if len(fire_instances) == 0 and fire_amount <= 0:
 		prepare_next_wave()
+
 		
 func prepare_next_wave():
 	if current_wave >= max_waves:
@@ -53,10 +55,10 @@ func prepare_next_wave():
 		return
 		
 	current_wave += 1 	# Increment Wave Count
+	$HUD.show_message("Wave" + str(current_wave))
 	$HUD.show_message( "The fire has taken a break..")
 	
 	#TODO Implement a delay or some visual feedback that a new wave is starting
-	await get_tree().create_timer(10.0).timeout # Waits two seconds before starting the next wave.
 	
 	fire_amount = 10 + current_wave * 5 # Difficulty scaling here boss
 	fire_timeout = max(fire_timeout - timeout_decrease, 0.5) # Timer safeguard so timer doesn't become negative or to low
