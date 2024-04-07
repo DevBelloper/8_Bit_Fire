@@ -85,10 +85,9 @@ script = ExtResource("1_bl843")
 metadata/_edit_group_ = true
 
 [node name="Fire_Animation" type="AnimatedSprite2D" parent="."]
-visible = false
 texture_repeat = 2
 sprite_frames = SubResource("SpriteFrames_a0hbu")
-frame_progress = 0.735547
+frame_progress = 0.195571
 
 [node name="Fire_Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -101,7 +100,7 @@ autoplay = true
 max_distance = 480.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(2, -1)
+position = Vector2(1, -1)
 scale = Vector2(1.5, 1.5)
 amount = 300
 process_material = SubResource("ParticleProcessMaterial_mdrxn")

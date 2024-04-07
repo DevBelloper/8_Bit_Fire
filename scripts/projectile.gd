@@ -8,6 +8,10 @@ var speed: float = 600
 
 func _process(delta):
 	position = position + speed * direction * delta
+	if global_position.distance_to(get_global_mouse_position()) < 8:
+		$CPUParticles2D.emitting = true
+		queue_free()
+		$CPUParticles2D.emitting = false
 
 func _ready():
 	#Start time for that will despawn the projectile after its lifetime EXPIRES
