@@ -6,51 +6,49 @@
 script = ExtResource("1_mx5w5")
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 62.0
-offset_top = 189.0
-offset_right = 114.0
-offset_bottom = 212.0
+offset_left = 320.0
+offset_top = 91.0
+offset_right = 372.0
+offset_bottom = 114.0
 text = "Score: "
 
 [node name="StartMessage" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 796.0
+offset_top = -101.0
+offset_right = 796.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 0
+text = "The forest is burning.."
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -432.0
-offset_top = -106.0
-offset_right = -32.0
-offset_bottom = -83.0
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
 size_flags_horizontal = 4
-text = "The city is burning.."
-autowrap_mode = 2
-
-[node name="StartButton" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -478.0
-offset_right = -58.0
-offset_bottom = -447.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
 text = "Start"
 
 [node name="Score" type="Label" parent="."]
-offset_left = 111.0
-offset_top = 190.0
-offset_right = 151.0
-offset_bottom = 213.0
+offset_left = 368.0
+offset_top = 92.0
+offset_right = 408.0
+offset_bottom = 115.0
 text = "0
 "
 
@@ -62,10 +60,10 @@ one_shot = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 48.0
-offset_top = -131.0
-offset_right = 209.0
-offset_bottom = -104.0
+offset_left = 108.0
+offset_top = -1325.0
+offset_right = 269.0
+offset_bottom = -1298.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -74,10 +72,10 @@ size_flags_vertical = 4
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 44.0
-offset_top = -160.0
-offset_right = 205.0
-offset_bottom = -137.0
+offset_left = 104.0
+offset_top = -1354.0
+offset_right = 265.0
+offset_bottom = -1331.0
 grow_vertical = 0
 size_flags_horizontal = 4
 text = "Water tank reserves:"
