@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgd0ag2prmrcp"]
+[gd_scene load_steps=14 format=3 uid="uid://dgd0ag2prmrcp"]
 
 [ext_resource type="PackedScene" uid="uid://dijksomgphj8l" path="res://scenes/level.tscn" id="1_cxjqo"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l77q7"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://pg758lbec4jt" path="res://scenes/fire.tscn" id="3_lqplh"]
 [ext_resource type="PackedScene" uid="uid://c4h6rplc6pii2" path="res://scenes/hud.tscn" id="5_5yc50"]
 [ext_resource type="PackedScene" uid="uid://dqoeyba2scmd0" path="res://scenes/resupply.tscn" id="6_qdjft"]
-[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="7_bxrx6"]
-[ext_resource type="Texture2D" uid="uid://d2eme7qk2wls0" path="res://assets/Paralax-sky.png" id="7_nu2m4"]
-[ext_resource type="Texture2D" uid="uid://5orng4uc4snb" path="res://assets/Paralax-clouds.png" id="8_5obu5"]
-[ext_resource type="Texture2D" uid="uid://bnp2ria37l8pl" path="res://assets/Paralax-back hill.png" id="9_da0qk"]
-[ext_resource type="Texture2D" uid="uid://bx8p6uo6k8x71" path="res://assets/Paralax-hills.png" id="10_hn2ae"]
+[ext_resource type="Texture2D" uid="uid://dpctbfxbvsv0r" path="res://assets/sky.png" id="7_jo530"]
+[ext_resource type="Script" path="res://scenes/clouds.gd" id="8_8yr4j"]
+[ext_resource type="Texture2D" uid="uid://dkg0nstadcr1o" path="res://assets/cloud.png" id="9_56q4p"]
+[ext_resource type="Texture2D" uid="uid://b3nphs3ix5mct" path="res://assets/far_hill_para.png" id="10_uea81"]
+[ext_resource type="Texture2D" uid="uid://b5k3pipostycx" path="res://assets/back_hill_para.png" id="10_ynyqq"]
+[ext_resource type="Texture2D" uid="uid://dkvmflh05aqjp" path="res://assets/Middleground.png" id="12_1i3np"]
+[ext_resource type="Texture2D" uid="uid://ba6mq6myed6gs" path="res://assets/ground.png" id="12_y0u5n"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_l77q7")
@@ -27,7 +29,7 @@ position = Vector2(141, -139)
 rotation = -0.00283527
 
 [node name="Fire" parent="." instance=ExtResource("3_lqplh")]
-position = Vector2(1622, -166)
+position = Vector2(3463, -158)
 
 [node name="FireTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -37,13 +39,18 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
 [node name="SpawnPosition" type="Marker2D" parent="."]
 
 [node name="SpawnArea" type="ReferenceRect" parent="." groups=["spawn_area"]]
-offset_left = 1737.0
-offset_top = -248.0
-offset_right = 3689.0
-offset_bottom = -162.0
+offset_left = 1781.0
+offset_top = -420.0
+offset_right = 3733.0
+offset_bottom = -334.0
+scale = Vector2(0.863418, 3.12312)
 border_width = 0.1
 
 [node name="Marker2D" type="Marker2D" parent="SpawnArea"]
@@ -52,42 +59,96 @@ position = Vector2(1941, 84)
 [node name="HUD" parent="." instance=ExtResource("5_5yc50")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(0, -376)
-scale = Vector2(0.3, 0.3)
-transform = Transform2D(0.3, 0, 0, 0.3, 0, -376)
 follow_viewport_enabled = true
-script = ExtResource("7_bxrx6")
+scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayer_SKY" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(1920, 0)
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.01, 0)
+motion_mirroring = Vector2(5760, 0)
 
-[node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_SKY"]
-texture = ExtResource("7_nu2m4")
+[node name="SKY_Sprite2D" type="Sprite2D" parent="ParallaxBackground/sky"]
+texture_repeat = 2
+position = Vector2(-3637, -1079)
+texture = ExtResource("7_jo530")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8640, 1080)
 
-[node name="ParallaxLayer_CLOUD" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+top_level = true
+texture_repeat = 2
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(11520, 0)
+script = ExtResource("8_8yr4j")
 
-[node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_CLOUD"]
-texture = ExtResource("8_5obu5")
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/clouds"]
+position = Vector2(-576, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_56q4p")
+centered = false
+offset = Vector2(0, -1080)
+region_enabled = true
+region_rect = Rect2(0, 0, 11520, 720)
 
-[node name="ParallaxLayer_Back_HILL" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(1920, 0)
+[node name="Back_Hill" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(5760, 0)
 
-[node name="Back_Hill" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_Back_HILL"]
-texture = ExtResource("9_da0qk")
+[node name="Back_Hill_Sprite" type="Sprite2D" parent="ParallaxBackground/Back_Hill"]
+texture_repeat = 2
+position = Vector2(-3615, -769)
+texture = ExtResource("10_ynyqq")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8640, 1080)
 
-[node name="ParallaxLayer_Front_HILL" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(1920, 0)
+[node name="Hill" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(5760, 0)
 
-[node name="Front_Hill" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_Front_HILL"]
-texture = ExtResource("10_hn2ae")
+[node name="Hill_Sprite" type="Sprite2D" parent="ParallaxBackground/Hill"]
+texture_repeat = 2
+position = Vector2(-3741, -627)
+texture = ExtResource("10_uea81")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8640, 1080)
+
+[node name="Hill2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(5760, 0)
+
+[node name="Hill_Sprite" type="Sprite2D" parent="ParallaxBackground/Hill2"]
+texture_repeat = 2
+position = Vector2(-2121, -1068)
+texture = ExtResource("12_1i3np")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8640, 1080)
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="Fore_ground" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.25, 1)
+motion_mirroring = Vector2(5760, 0)
+
+[node name="Fore_ground_Sprite" type="Sprite2D" parent="ParallaxForeground/Fore_ground"]
+texture_repeat = 2
+position = Vector2(-3440, -929)
+texture = ExtResource("12_y0u5n")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8640, 1080)
+
+[node name="Fore_ground2" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.25, 1)
+motion_mirroring = Vector2(5760, 0)
 
 [connection signal="water_level_changed" from="Player" to="HUD" method="_on_player_water_level_changed"]
 [connection signal="water_used" from="Player" to="HUD" method="_on_water_used"]
 [connection signal="score" from="Fire" to="." method="increase_score"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

@@ -5,7 +5,7 @@ signal water_level_changed(current_water) # Signal to emit when water level chan
 
 @export var speed = 400
 # Starting Values of water (Fire engines carry their own water, Water tank sizes range from 500 - 1500 Gallons.)
-var max_water = 1500
+var max_water = 15000
 var current_water = max_water
 var is_idle = true # Keep track of idle state for player movement
 
@@ -37,9 +37,8 @@ func get_input():
 		$Weapon.position = Vector2(12, -36)
 
 	if left:
-		$Weapon.position = Vector2(-25, -36)
-
 		velocity.x -= speed
+		$Weapon.position = Vector2(-25, -36)
 		
 
 func _physics_process(_delta):
