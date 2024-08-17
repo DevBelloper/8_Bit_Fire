@@ -8,6 +8,7 @@ signal water_level_changed(current_water) # Signal to emit when water level chan
 var max_water = 15000
 var current_water = max_water
 var is_idle = true # Keep track of idle state for player movement
+var points: int = 0 # variable to store points
 
 func _ready():
 	var weapon = $Weapon
@@ -19,8 +20,6 @@ func _on_Resupply_trigger():
 	print("Signal recieved loud and clear for resupply")
 	current_water = max_water
 	emit_signal("water_level_changed", current_water)
-	
-	
 	
 func _on_weapon_water_used(amount):
 	current_water -= amount
@@ -65,4 +64,3 @@ func _physics_process(_delta):
 func use_water(amount: float):
 	current_water = max(current_water - amount, 0) # Safeguard against negative
 	emit_signal("water_level_changed",current_water) # Notify the HUD
-

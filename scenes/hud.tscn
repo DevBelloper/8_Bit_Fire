@@ -13,20 +13,21 @@ offset_bottom = 114.0
 text = "Score: "
 
 [node name="StartMessage" type="Label" parent="."]
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 796.0
-offset_top = -101.0
-offset_right = 796.0
-offset_bottom = -78.0
+offset_left = -112.0
+offset_top = -104.0
+offset_right = 19.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 size_flags_horizontal = 0
-text = "The forest is burning.."
-autowrap_mode = 2
+text = "Save the People! "
+horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 8
@@ -34,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
+offset_left = -80.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -79,6 +80,21 @@ offset_bottom = -1331.0
 grow_vertical = 0
 size_flags_horizontal = 4
 text = "Water tank reserves:"
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 1600.0
+offset_top = 88.0
+offset_right = 1652.0
+offset_bottom = 111.0
+text = "Lives: "
+
+[node name="Life" type="Label" parent="."]
+offset_left = 1648.0
+offset_top = 88.0
+offset_right = 1688.0
+offset_bottom = 111.0
+text = "3
+"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

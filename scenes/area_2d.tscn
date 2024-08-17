@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhgn0dd0dn3p5"]
+
+[ext_resource type="Texture2D" uid="uid://k2tukfolrdct" path="res://assets/Barrel.png" id="1_qew0m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ib4e1"]
+
+[node name="People" type="Area2D"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ib4e1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 3)
+texture = ExtResource("1_qew0m")

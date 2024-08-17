@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgd0ag2prmrcp"]
+[gd_scene load_steps=15 format=3 uid="uid://dgd0ag2prmrcp"]
 
 [ext_resource type="PackedScene" uid="uid://dijksomgphj8l" path="res://scenes/level.tscn" id="1_cxjqo"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l77q7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b5k3pipostycx" path="res://assets/back_hill_para.png" id="10_ynyqq"]
 [ext_resource type="Texture2D" uid="uid://dkvmflh05aqjp" path="res://assets/Middleground.png" id="12_1i3np"]
 [ext_resource type="Texture2D" uid="uid://ba6mq6myed6gs" path="res://assets/ground.png" id="12_y0u5n"]
+[ext_resource type="PackedScene" uid="uid://ts5cwb7d4oh7" path="res://scenes/people.tscn" id="14_01qqh"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_l77q7")
@@ -144,6 +145,9 @@ region_rect = Rect2(0, 0, 8640, 1080)
 [node name="Fore_ground2" type="ParallaxLayer" parent="ParallaxForeground"]
 motion_scale = Vector2(1.25, 1)
 motion_mirroring = Vector2(5760, 0)
+
+[node name="People" parent="." groups=["people"] instance=ExtResource("14_01qqh")]
+position = Vector2(1273, -165)
 
 [connection signal="water_level_changed" from="Player" to="HUD" method="_on_player_water_level_changed"]
 [connection signal="water_used" from="Player" to="HUD" method="_on_water_used"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://co8euca1gkyoj"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_tgmb0"]
+[ext_resource type="Texture2D" uid="uid://cqdqqekp6u5v5" path="res://assets/water.png" id="2_xwrro"]
+
+[sub_resource type="Shader" id="Shader_l0rgv"]
+code = "shader_type particles;
+
+void start() {
+	// Called when a particle is spawned.
+}
+
+void process() {
+	// Called every frame on existing particles (according to the Fixed FPS property).
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kraxi"]
+shader = SubResource("Shader_l0rgv")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7x83"]
+
+[node name="Projectile" type="Area2D" groups=["water"]]
+scale = Vector2(0.982299, 0.988166)
+collision_layer = 17
+collision_mask = 4
+script = ExtResource("1_tgmb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_kraxi")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_xwrro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.01802, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_r7x83")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 80
+lifetime = 0.5
+speed_scale = 5.0
+explosiveness = 0.09
+emission_shape = 2
+emission_sphere_radius = 6.0
+particle_flag_align_y = true
+gravity = Vector2(0, 9.8)
+color = Color(0.207843, 1, 1, 1)
+hue_variation_min = -0.51
+hue_variation_max = 0.76
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
